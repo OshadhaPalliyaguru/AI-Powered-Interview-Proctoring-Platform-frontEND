@@ -44,3 +44,23 @@ npm install
 
 # Run the development server
 npm run dev
+
+2. Backend Setup
+Navigate to the backend directory.
+
+Configure your application.properties with your PostgreSQL credentials and AI API keys.
+
+Run the Spring Boot application via your IDE or Maven: mvn spring-boot:run
+
+🗺️ Roadmap (MVP Sprint)
+[ ] Phase 1: Frontend Audio Visualizer UI & Mic/Camera access.
+
+[ ] Phase 2: Spring Boot Backend & Database schema setup.
+
+[ ] Phase 3: AI Engine Integration (Speech -> Text -> LLM -> Speech).
+
+[ ] Phase 4: Anti-Cheating & Proctoring module implementation.
+
+[ ] Phase 5: Avatar Integration (R&D).
+
+Developed by Oshadha Palliyaguru
