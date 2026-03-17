@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 AI-Powered Interview & Proctoring Platform
 
-## Getting Started
+## 📌 Overview
+An automated, real-time technical interview platform driven by Artificial Intelligence. This system evaluates candidates through dynamic, voice-based interactions and dynamic follow-up questions, while ensuring interview integrity via advanced AI proctoring mechanisms.
 
-First, run the development server:
+## ✨ Key Features (Ongoing)
+* **🎙️ Interactive Voice UI:** Real-time audio visualizer for seamless human-AI conversation.
+* **🧠 Dynamic AI Interviewer:** Powered by LLMs to ask context-aware, deep-dive technical questions based on candidate responses.
+* **👁️ Automated Proctoring:** Built-in anti-cheating mechanisms including tab-switching detection and foundational eye/gaze tracking.
+* **⚡ High-Performance Architecture:** Asynchronous processing of high-latency LLM responses to ensure a zero-lag interview experience.
 
+## 🛠️ Tech Stack
+**Frontend:**
+* Next.js (App Router) & React
+* Tailwind CSS & Framer Motion (Animations)
+* WebRTC & MediaPipe (Proctoring/Camera APIs)
+
+**Backend:**
+* Java 17 & Spring Boot 3
+* PostgreSQL (Database)
+* REST APIs & Asynchronous Processing
+
+**AI & Integrations:**
+* Google Gemini API / OpenAI API (LLM Engine)
+* Web Speech API (Speech-to-Text & Text-to-Speech)
+
+## 🚀 Getting Started (Local Development)
+
+### Prerequisites
+* Node.js (v18+)
+* Java 17+ & Maven
+* PostgreSQL
+
+### 1. Frontend Setup
 ```bash
+# Clone the repository
+git clone [https://github.com/oshadhap/ai-interviewer.git](https://github.com/oshadhap/ai-interviewer.git)
+
+# Navigate to frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Backend Setup
+Navigate to the backend directory.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Configure your application.properties with your PostgreSQL credentials and AI API keys.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run the Spring Boot application via your IDE or Maven: mvn spring-boot:run
 
-## Learn More
+🗺️ Roadmap (MVP Sprint)
+[ ] Phase 1: Frontend Audio Visualizer UI & Mic/Camera access.
 
-To learn more about Next.js, take a look at the following resources:
+[ ] Phase 2: Spring Boot Backend & Database schema setup.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[ ] Phase 3: AI Engine Integration (Speech -> Text -> LLM -> Speech).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[ ] Phase 4: Anti-Cheating & Proctoring module implementation.
 
-## Deploy on Vercel
+[ ] Phase 5: Avatar Integration (R&D).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Developed by Oshadha Palliyaguru
