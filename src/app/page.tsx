@@ -1,12 +1,12 @@
 // app/page.tsx
 "use client"; 
-import React, { useState, useEffect } from 'react'; // 1. useEffect import kala
+import React, { useState, useEffect } from 'react';
 import WebcamFeed from '../components/WebcamFeed';
 import AudioVisualizer from '../components/AudioVisualizer';
 import { Mic, MicOff } from 'lucide-react';
 
 import { useSpeechToText } from '../hooks/useSpeachToText';
-import { sendToAI } from '../services/aiService'; // 2. Api hadapu service eka import kala
+import { sendToAI } from '../services/aiService';
 
 export default function InterviewRoom() {
   const { transcript, isListening, startListening, stopListening } = useSpeechToText();
@@ -25,21 +25,43 @@ export default function InterviewRoom() {
   };
 
 
-  useEffect(() => {
+ useEffect(() => {
     const fetchAIResponse = async () => {
-     
+      
       if (!isListening && transcript.trim() !== '') {
-        setIsProcessing(true);
+        setIsProcessing(true); 
         
+       
         const reply = await sendToAI(transcript); 
         setAiResponse(reply); 
+        
+        
+        try {
+          const audioRes = await fetch('/api/tts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: reply })
+          });
+
+          if (audioRes.ok) {
+          
+            const audioBlob = await audioRes.blob();
+            const audioUrl = URL.createObjectURL(audioBlob);
+            
+           
+            const audio = new Audio(audioUrl);
+            audio.play();
+          }
+        } catch (error) {
+          console.error("Voice generation failed:", error);
+        }
         
         setIsProcessing(false); 
       }
     };
 
     fetchAIResponse();
-  }, [isListening, transcript]); 
+  }, [isListening, transcript]);
 
   return (
     <div className="min-h-screen bg-gray-950 relative overflow-hidden flex items-center justify-center flex-col">
