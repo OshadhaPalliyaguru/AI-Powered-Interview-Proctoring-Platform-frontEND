@@ -1,14 +1,19 @@
 // app/page.tsx
 "use client"; 
 import React, { useState, useEffect } from 'react';
-import WebcamFeed from '../components/WebcamFeed';
+import dynamic from 'next/dynamic';
 import AudioVisualizer from '../components/AudioVisualizer';
 import { Mic, MicOff } from 'lucide-react';
 
 import { useSpeechToText } from '../hooks/useSpeachToText';
 import { sendToAI } from '../services/aiService';
+import { useProctoring } from '../hooks/useProctoring';
 
 export default function InterviewRoom() {
+
+  const WebcamFeed = dynamic(() => import('../components/WebcamFeed'), {
+  ssr: false, 
+});
   const { transcript, isListening, startListening, stopListening } = useSpeechToText();
   
 
@@ -23,6 +28,8 @@ export default function InterviewRoom() {
       startListening();
     }
   };
+
+  const { warningCount, isTabHidden } = useProctoring();
 
 
  useEffect(() => {
@@ -65,6 +72,22 @@ export default function InterviewRoom() {
 
   return (
     <div className="min-h-screen bg-gray-950 relative overflow-hidden flex items-center justify-center flex-col">
+
+    {/* Proctoring Warning UI */}
+      {warningCount > 0 && (
+        <div className="absolute top-4 left-4 z-30 bg-red-900/80 border border-red-500 text-red-200 px-4 py-2 rounded-lg shadow-lg">
+          ⚠️ Warnings: {warningCount} (Do not switch tabs)
+        </div>
+      )}
+
+      {isTabHidden && (
+        <div className="absolute inset-0 bg-red-950/90 z-50 flex items-center justify-center">
+          <h1 className="text-white text-4xl font-bold text-center">
+            Interview Paused! <br/> Please return to this tab immediately.
+          </h1>
+        </div>
+      )}
+
       <WebcamFeed />
       <AudioVisualizer isListening={isListening} />
 
