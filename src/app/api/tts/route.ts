@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const { text } = await request.json();
     
   
-    const voiceId = 'pNInz6obpgDQGcFmaJgB'; 
+    const voiceId = 'EXAVITQu4vr4xnSDxMaL'; 
     const apiKey = process.env.ELEVENLABS_API_KEY;
 
     if (!apiKey) {
