@@ -52,7 +52,7 @@ const [isInterviewStarted, setIsInterviewStarted] = useState(false);
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // CV details tikath API ekata yawanawa
+        
         body: JSON.stringify({ 
           message: text,
           candidateName: candidateName,
